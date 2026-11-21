@@ -21,7 +21,6 @@
       --accent-green-soft: rgba(34, 197, 94, 0.16);
       --accent-amber: #f59e0b;
       --accent-amber-soft: rgba(245, 158, 11, 0.15);
-      --accent-rose: #fb7185;
       --shadow-glass: 0 24px 60px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.14);
       --radius-xl: 28px;
       --radius-lg: 20px;
@@ -102,15 +101,16 @@
     }
 
     .header-card {
-      padding: 26px 24px 22px;
+      padding: 24px 24px 22px;
     }
 
-    .brand-row {
+    .top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 18px;
+      flex-wrap: wrap;
     }
 
     .brand-badge {
@@ -135,11 +135,45 @@
       box-shadow: 0 0 12px rgba(125, 211, 252, 0.8);
     }
 
+    .right-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-glass);
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+
+    .lang-btn.active {
+      background: #ffffff;
+      color: #090b10;
+    }
+
     .creator-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
+      gap: 5px;
+      padding: 6px 11px;
       border-radius: var(--radius-pill);
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.09);
@@ -384,15 +418,23 @@
 
   <main class="container">
     <section class="glass-card header-card">
-      <div class="brand-row">
+      <div class="top-bar">
         <span class="brand-badge">
           <span class="brand-dot"></span>
           LauncherXos17
         </span>
-        <span class="creator-pill">by <strong>masshieb</strong></span>
+
+        <div class="right-controls">
+          <div class="lang-switch" role="group" aria-label="Language selector">
+            <button type="button" class="lang-btn active" data-lang="id">ID</button>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+          </div>
+          <span class="creator-pill"><span id="byLabel">by</span> <strong>masshieb</strong></span>
+        </div>
       </div>
+
       <h1 class="title">LauncherXos17</h1>
-      <p class="subtitle">
+      <p class="subtitle" id="subtitleText">
         Akses file eksklusif <strong>LauncherXos17</strong> oleh <strong>masshieb</strong>. Dukung melalui SociaBuzz untuk membuka tautan unduhan secara otomatis.
       </p>
     </section>
@@ -407,8 +449,8 @@
             </svg>
           </div>
           <div class="status-content">
-            <h2>Akses Terkunci <span class="pill-tag amber">Locked</span></h2>
-            <p>
+            <h2><span id="lockedTitle">Akses Terkunci</span> <span class="pill-tag amber" id="lockedBadge">Locked</span></h2>
+            <p id="lockedDesc">
               Akses file memerlukan dukungan melalui SociaBuzz. Tautan unduhan akan terbuka otomatis setelah pembayaran berhasil.
             </p>
           </div>
@@ -424,15 +466,15 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
           </svg>
-          Dukung &amp; Bayar via SociaBuzz
+          <span id="donateBtnText">Dukung &amp; Bayar via SociaBuzz</span>
         </a>
 
         <div class="steps-box">
-          <div class="steps-title">Cara Membuka Unduhan Otomatis</div>
+          <div class="steps-title" id="stepsTitle">Cara Membuka Unduhan Otomatis</div>
           <ol class="steps-list">
-            <li><span class="step-num">1</span><span>Tekan tombol <strong>Dukung &amp; Bayar via SociaBuzz</strong> di atas.</span></li>
-            <li><span class="step-num">2</span><span>Selesaikan proses pembayaran di halaman SociaBuzz.</span></li>
-            <li><span class="step-num">3</span><span>Setelah transaksi berhasil, buka tautan pembuka atau kembali ke halaman ini untuk mengunduh file.</span></li>
+            <li><span class="step-num">1</span><span id="step1Text">Tekan tombol <strong>Dukung &amp; Bayar via SociaBuzz</strong> di atas.</span></li>
+            <li><span class="step-num">2</span><span id="step2Text">Selesaikan proses pembayaran di halaman SociaBuzz.</span></li>
+            <li><span class="step-num">3</span><span id="step3Text">Setelah transaksi berhasil, buka tautan pembuka atau kembali ke halaman ini untuk mengunduh file.</span></li>
           </ol>
         </div>
       </div>
@@ -445,8 +487,8 @@
             </svg>
           </div>
           <div class="status-content">
-            <h2>Akses Terbuka <span class="pill-tag green">Unlocked</span></h2>
-            <p>
+            <h2><span id="unlockedTitle">Akses Terbuka</span> <span class="pill-tag green" id="unlockedBadge">Unlocked</span></h2>
+            <p id="unlockedDesc">
               Terima kasih atas dukunganmu! Tautan file <strong>LauncherXos17</strong> siap diakses melalui Google Drive di bawah ini.
             </p>
           </div>
@@ -464,11 +506,11 @@
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          Buka &amp; Download File (Google Drive)
+          <span id="downloadBtnText">Buka &amp; Download File (Google Drive)</span>
         </a>
 
         <button type="button" id="lockAgainBtn" class="btn btn-secondary">
-          Kunci Kembali Tampilan
+          <span id="lockAgainText">Kunci Kembali Tampilan</span>
         </button>
       </div>
     </section>
@@ -482,7 +524,47 @@
     const CONFIG = {
       sociabuzzUrl: "https://sociabuzz.com/masshieb_01/donate",
       googleDriveUrl: "https://drive.google.com/file/d/1Ycq1ok8WGOvP4bOcpFtSQ4aMc9wRge8i/view?usp=drivesdk",
-      storageKey: "launcherxos17_masshieb_unlocked_v1"
+      unlockStorageKey: "launcherxos17_masshieb_unlocked_v1",
+      langStorageKey: "launcherxos17_masshieb_lang_v1"
+    };
+
+    const TRANSLATIONS = {
+      id: {
+        htmlLang: "id",
+        byLabel: "oleh",
+        subtitle: "Akses file eksklusif <strong>LauncherXos17</strong> oleh <strong>masshieb</strong>. Dukung melalui SociaBuzz untuk membuka tautan unduhan secara otomatis.",
+        lockedTitle: "Akses Terkunci",
+        lockedBadge: "Locked",
+        lockedDesc: "Akses file memerlukan dukungan melalui SociaBuzz. Tautan unduhan akan terbuka otomatis setelah pembayaran berhasil.",
+        donateBtn: "Dukung & Bayar via SociaBuzz",
+        stepsTitle: "Cara Membuka Unduhan Otomatis",
+        step1: "Tekan tombol <strong>Dukung & Bayar via SociaBuzz</strong> di atas.",
+        step2: "Selesaikan proses pembayaran di halaman SociaBuzz.",
+        step3: "Setelah transaksi berhasil, buka tautan pembuka atau kembali ke halaman ini untuk mengunduh file.",
+        unlockedTitle: "Akses Terbuka",
+        unlockedBadge: "Unlocked",
+        unlockedDesc: "Terima kasih atas dukunganmu! Tautan file <strong>LauncherXos17</strong> siap diakses melalui Google Drive di bawah ini.",
+        downloadBtn: "Buka & Download File (Google Drive)",
+        lockAgain: "Kunci Kembali Tampilan"
+      },
+      en: {
+        htmlLang: "en",
+        byLabel: "by",
+        subtitle: "Exclusive <strong>LauncherXos17</strong> file by <strong>masshieb</strong>. Support via SociaBuzz to unlock the download link automatically.",
+        lockedTitle: "Access Locked",
+        lockedBadge: "Locked",
+        lockedDesc: "File access requires support through SociaBuzz. The download link will unlock once payment is completed.",
+        donateBtn: "Support & Pay via SociaBuzz",
+        stepsTitle: "How to Unlock Automatic Download",
+        step1: "Tap the <strong>Support & Pay via SociaBuzz</strong> button above.",
+        step2: "Complete the payment process on the SociaBuzz page.",
+        step3: "Once payment succeeds, open the unlock link or return to this page to download the file.",
+        unlockedTitle: "Access Unlocked",
+        unlockedBadge: "Unlocked",
+        unlockedDesc: "Thank you for your support! Your <strong>LauncherXos17</strong> Google Drive download link is ready below.",
+        downloadBtn: "Open & Download File (Google Drive)",
+        lockAgain: "Lock View Again"
+      }
     };
 
     const lockedView = document.getElementById("lockedView");
@@ -490,9 +572,40 @@
     const donateBtn = document.getElementById("donateBtn");
     const driveDownloadBtn = document.getElementById("driveDownloadBtn");
     const lockAgainBtn = document.getElementById("lockAgainBtn");
+    const langButtons = document.querySelectorAll(".lang-btn");
 
     donateBtn.href = CONFIG.sociabuzzUrl;
     driveDownloadBtn.href = CONFIG.googleDriveUrl;
+
+    function applyLanguage(lang) {
+      const targetLang = TRANSLATIONS[lang] ? lang : "id";
+      const t = TRANSLATIONS[targetLang];
+
+      document.documentElement.lang = t.htmlLang;
+      document.getElementById("byLabel").textContent = t.byLabel;
+      document.getElementById("subtitleText").innerHTML = t.subtitle;
+      document.getElementById("lockedTitle").textContent = t.lockedTitle;
+      document.getElementById("lockedBadge").textContent = t.lockedBadge;
+      document.getElementById("lockedDesc").textContent = t.lockedDesc;
+      document.getElementById("donateBtnText").textContent = t.donateBtn;
+      document.getElementById("stepsTitle").textContent = t.stepsTitle;
+      document.getElementById("step1Text").innerHTML = t.step1;
+      document.getElementById("step2Text").textContent = t.step2;
+      document.getElementById("step3Text").textContent = t.step3;
+      document.getElementById("unlockedTitle").textContent = t.unlockedTitle;
+      document.getElementById("unlockedBadge").textContent = t.unlockedBadge;
+      document.getElementById("unlockedDesc").innerHTML = t.unlockedDesc;
+      document.getElementById("downloadBtnText").textContent = t.downloadBtn;
+      document.getElementById("lockAgainText").textContent = t.lockAgain;
+
+      langButtons.forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === targetLang);
+      });
+
+      try {
+        localStorage.setItem(CONFIG.langStorageKey, targetLang);
+      } catch (err) {}
+    }
 
     function isPaymentVerifiedFromUrl() {
       const params = new URLSearchParams(window.location.search);
@@ -514,23 +627,33 @@
     function setUnlockedState(shouldUnlock) {
       if (shouldUnlock) {
         try {
-          localStorage.setItem(CONFIG.storageKey, "true");
+          localStorage.setItem(CONFIG.unlockStorageKey, "true");
         } catch (err) {}
         lockedView.classList.add("hidden");
         unlockedView.classList.remove("hidden");
       } else {
         try {
-          localStorage.removeItem(CONFIG.storageKey);
+          localStorage.removeItem(CONFIG.unlockStorageKey);
         } catch (err) {}
         unlockedView.classList.add("hidden");
         lockedView.classList.remove("hidden");
       }
     }
 
+    function initLanguage() {
+      let savedLang = "id";
+      try {
+        savedLang = localStorage.getItem(CONFIG.langStorageKey) || "id";
+      } catch (err) {
+        savedLang = "id";
+      }
+      applyLanguage(savedLang);
+    }
+
     function initGate() {
       let savedUnlocked = false;
       try {
-        savedUnlocked = localStorage.getItem(CONFIG.storageKey) === "true";
+        savedUnlocked = localStorage.getItem(CONFIG.unlockStorageKey) === "true";
       } catch (err) {
         savedUnlocked = false;
       }
@@ -542,12 +665,19 @@
       }
     }
 
+    langButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        applyLanguage(btn.dataset.lang);
+      });
+    });
+
     lockAgainBtn.addEventListener("click", () => {
       const cleanUrl = window.location.origin + window.location.pathname;
       window.history.replaceState({}, document.title, cleanUrl);
       setUnlockedState(false);
     });
 
+    initLanguage();
     initGate();
   </script>
 </body>
